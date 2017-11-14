@@ -12,11 +12,10 @@ namespace Complete
         // different phases of the game.
 
         public Color m_PlayerColor;                             // This is the color this tank will be tinted.
-        public Transform m_SpawnPoint;                          // The position and direction the tank will have when it spawns.
-        [HideInInspector] public int m_PlayerNumber;            // This specifies which player this the manager for.
-        [HideInInspector] public string m_ColoredPlayerText;    // A string that represents the player with their number colored to match their tank.
-        [HideInInspector] public GameObject m_Instance;         // A reference to the instance of the tank when it is created.
-        [HideInInspector] public int m_Wins;                    // The number of wins this player has so far.
+        public int m_PlayerNumber;            // This specifies which player this the manager for.
+		[HideInInspector] public string m_ColoredPlayerText;    // A string that represents the player with their number colored to match their tank.
+        public GameObject m_Instance;         // A reference to the instance of the tank when it is created.
+        private int m_Wins;                    // The number of wins this player has so far.
         
 
         private TankMovement m_Movement;                        // Reference to tank's movement script, used to disable and enable control.
@@ -51,31 +50,28 @@ namespace Complete
 
 
         // Used during the phases of the game where the player shouldn't be able to control their tank.
-        public void DisableControl ()
-        {
-            m_Movement.enabled = false;
-            m_Shooting.enabled = false;
-
-            m_CanvasGameObject.SetActive (false);
-        }
+//        public void DisableControl ()
+//        {
+//            m_Movement.enabled = false;
+//            m_Shooting.enabled = false;
+//
+//            m_CanvasGameObject.SetActive (false);
+//        }
 
 
         // Used during the phases of the game where the player should be able to control their tank.
-        public void EnableControl ()
-        {
-            m_Movement.enabled = true;
-            m_Shooting.enabled = true;
-
-            m_CanvasGameObject.SetActive (true);
-        }
+//        public void EnableControl ()
+//        {
+//            m_Movement.enabled = true;
+//            m_Shooting.enabled = true;
+//
+//            m_CanvasGameObject.SetActive (true);
+//        }
 
 
         // Used at the start of each round to put the tank into it's default state.
         public void Reset ()
         {
-            m_Instance.transform.position = m_SpawnPoint.position;
-            m_Instance.transform.rotation = m_SpawnPoint.rotation;
-
             m_Instance.SetActive (false);
             m_Instance.SetActive (true);
         }
